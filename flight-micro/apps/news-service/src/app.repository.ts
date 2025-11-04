@@ -130,6 +130,7 @@ export class AppRepository {
 
     const operatorMap = {
       id: (val: string) => ({ equal: val }),
+      flightId: (val: string) => ({ equal: val }),
       title: (val: string) => ({ contains: val, mode: 'insensitive' }),
       isPublished: (val: string) => ({ equals: val === 'true' }),
     };

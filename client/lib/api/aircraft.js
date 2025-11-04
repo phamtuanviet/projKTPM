@@ -2,7 +2,7 @@
 import axios from "axios";
 import { toast } from "sonner";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL + "/aircraft";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL + "/aircraft" 
 
 const aircraftApi = axios.create({
   baseURL: API_BASE_URL,
@@ -31,6 +31,7 @@ const aircraftService = {
     }
   },
 
+  //
   getAircraftById: async (id) => {
     try {
       return await aircraftApi.get(`/${id}`, { withCredentials: true });
@@ -40,6 +41,7 @@ const aircraftService = {
     }
   },
 
+  //
   searchAircrafts: async (searchTerm) => {
     try {
       return await aircraftApi.get(`/search-aircrafts/${searchTerm}`, {
@@ -50,6 +52,7 @@ const aircraftService = {
       return null;
     }
   },
+  //
   searchAircraftsInFlight: async (searchTerm, { signal } = {}) => {
     try {
       return await aircraftApi.get(
@@ -64,6 +67,7 @@ const aircraftService = {
       toast.error(error?.response?.data?.message || "Something went wrong");
     }
   },
+  //
   getAircraftsBySearch: async (
     page,
     pageSize = 10,
@@ -89,6 +93,7 @@ const aircraftService = {
     }
   },
 
+  //
   filterAircraft: async (filterData) => {
     try {
       filterData.page = filterData?.page || 1;
@@ -103,6 +108,7 @@ const aircraftService = {
     }
   },
 
+  //
   createNewAircraft: async (aircraftData) => {
     try {
       return await aircraftApi.post("/", aircraftData, {
@@ -114,6 +120,7 @@ const aircraftService = {
     }
   },
 
+  //
   updateAircraft: async (id, updateData) => {
     try {
       return await aircraftApi.put(`/${id}`, updateData, {
@@ -125,6 +132,7 @@ const aircraftService = {
     }
   },
 
+  //
   deleteAircraft: async (id) => {
     try {
       const data = await aircraftApi.delete(`/${id}`, {
@@ -138,6 +146,7 @@ const aircraftService = {
     }
   },
 
+  //
   countAircrafts: async () => {
     try {
       return await aircraftApi.get("/count-aircrafts", {

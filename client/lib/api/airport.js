@@ -38,6 +38,7 @@ const airportService = {
     }
   },
 
+  //
   searchAirports: async (searchTerm) => {
     try {
       return await airportApi.get(`/search-airports/${searchTerm}`, {
@@ -49,6 +50,7 @@ const airportService = {
     }
   },
 
+  //
   searchAirportsInFlight: async (searchTerm, { signal } = {}) => {
     try {
       return await airportApi.get(`/search-airports-in-flight/${searchTerm}`, {
@@ -61,6 +63,7 @@ const airportService = {
       return null;
     }
   },
+
 
   createNewAirport: async (airportData) => {
     try {

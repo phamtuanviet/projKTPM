@@ -103,7 +103,7 @@ export class AuthService {
       `email-verification-register:${userId}`,
     );
     if (storedCode != code) {
-      console.log(storedCode,storedCode.type)
+      console.log(storedCode, storedCode.type);
       throw new HttpException('Invalid or expired verification code', 400);
     }
 
@@ -192,7 +192,10 @@ export class AuthService {
     };
   }
 
-  async logout(id: string, refreshToken: string) {
+  async logout(id: string, refreshToken?: string) {
+    if (!refreshToken) {
+      throw new HttpException('Refresh token is required', 400);
+    }
     const storedToken = await this.refreshTokenRepo.findValidToken(
       id,
       refreshToken,
@@ -367,7 +370,10 @@ export class AuthService {
     }
   }
 
-  async refreshAccessToken(userId: string, refreshToken: string) {
+  async refreshAccessToken(userId: string, refreshToken?: string) {
+    if (!refreshToken) {
+      throw new HttpException('Refresh token is required', 400);
+    }
     const user = await this.authRepository.findById(userId);
     if (!user) {
       throw new HttpException('User not found', 404);

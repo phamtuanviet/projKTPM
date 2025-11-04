@@ -5,6 +5,7 @@ import * as redisStore from 'cache-manager-ioredis';
 import { AuthModule } from './domains/auth/auth.module';
 import { NewsModule } from './domains/news/news.module';
 import { UserModule } from './domains/user/user.module';
+import { TestModule } from './test/test.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { UserModule } from './domains/user/user.module';
     AuthModule,
     NewsModule,
     UserModule,
+    TestModule
   ],
   controllers: [],
   providers: [AppService],

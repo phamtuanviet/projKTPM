@@ -6,7 +6,7 @@ import { AirportModule } from './domain/airport/airport.module';
 import { RmqModule } from './rbmq/rmq.module';
 import { RedisModule } from './redis/redis.module';
 import { FlightModule } from './domain/flight/flight.module';
-import { FlightSeatModule } from './domain/flightSeat/flightSeat.module';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -16,10 +16,13 @@ import { FlightSeatModule } from './domain/flightSeat/flightSeat.module';
     AircraftModule,
     AirportModule,
     FlightModule,
-    FlightSeatModule,
     PrismaModule,
     RmqModule.register('logging-queue'),
+    RmqModule.register('flight-booking-queue'),
     RedisModule,
+    HttpModule.register({
+      timeout: 5000,
+    }),
   ],
   controllers: [],
   providers: [],

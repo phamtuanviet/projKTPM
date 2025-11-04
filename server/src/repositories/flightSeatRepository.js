@@ -1,6 +1,8 @@
-import { SeatClass } from "@prisma/client";
+import pkg from '@prisma/client';
 import { getFlightById } from "./flightRepository.js";
 import { prisma } from "../services/prisma.js";
+
+const { SeatClass } = pkg;
 
 export const getAllFlightSeats = async () => {
   return await prisma.flightSeat.findMany();

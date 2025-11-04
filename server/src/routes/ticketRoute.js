@@ -15,6 +15,8 @@ ticketRoute.get(
   "/get-all-flight/:flightId",
   ticketController.getAllTicketsFromFlight
 );
+
+
 ticketRoute.get("/look-up/:search", ticketController.lookUpTicket);
 
 // Filtering and searching

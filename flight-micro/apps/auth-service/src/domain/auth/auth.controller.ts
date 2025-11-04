@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { VerifyOtpDto } from './dto/verifyEmail.dto';
@@ -8,6 +8,7 @@ import { LogoutDto } from './dto/logout.dto';
 import { EmailDto } from './dto/email.dto';
 import { ResetPasswordDto } from './dto/resetPassword.dto';
 import { GoogleLoginDto } from './dto/googleLogin.dto';
+import type { Request } from 'express';
 
 @Controller('api/auth')
 export class AuthController {
@@ -40,8 +41,8 @@ export class AuthController {
   }
 
   @Post('logout')
-  async logout(@Body() body: LogoutDto) {
-    return await this.authService.logout(body.id, body.refreshToken);
+  async logout(@Body() body: LogoutDto, @Req() req: Request) {
+    return await this.authService.logout(body.id, req.cookies['refresh_token']);
   }
 
   @Post('request-reset-password')
@@ -69,10 +70,10 @@ export class AuthController {
   }
 
   @Post('refresh-access-token')
-  async refreshAccessToken(@Body() body: LogoutDto) {
+  async refreshAccessToken(@Body() body: LogoutDto, @Req() req: Request) {
     return await this.authService.refreshAccessToken(
       body.id,
-      body.refreshToken,
+      req.cookies['refresh_token'],
     );
   }
 }

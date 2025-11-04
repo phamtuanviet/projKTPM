@@ -38,6 +38,7 @@ const flightService = {
       return null;
     }
   },
+  //
   searchFlightsInTicket: async (searchTerm, { signal } = {}) => {
     try {
       return await flightApi.get(`/search-flights-in-ticket/${searchTerm}`, {
@@ -53,6 +54,7 @@ const flightService = {
 
   // searchFlightsInTicket
 
+  //
   getFlightsBySearch: async (page, pageSize = 10, query, sortBy, sortOrder) => {
     try {
       const data = await flightApi.get(`/get-flights-by-search`, {
@@ -72,6 +74,7 @@ const flightService = {
     }
   },
 
+  //
   getFlightById: async (id) => {
     try {
       return await flightApi.get(`/${id}`, { withCredentials: true });
@@ -81,6 +84,7 @@ const flightService = {
     }
   },
 
+  //
   filterFlights: async (filterData) => {
     try {
       filterData.page = filterData?.page || 1;
@@ -95,6 +99,7 @@ const flightService = {
     }
   },
 
+  //
   searchFlightsByUser: async (searchData) => {
     try {
       return await flightApi.get("/search-flights-by-user", {
@@ -107,6 +112,7 @@ const flightService = {
     }
   },
 
+  //
   createFlight: async (flightData) => {
     try {
       return await flightApi.post("/", flightData, { withCredentials: true });
@@ -116,6 +122,7 @@ const flightService = {
     }
   },
 
+  //
   updateFlight: async (id, updateData) => {
     try {
       return await flightApi.put(`/${id}`, updateData, { withCredentials: true });
@@ -136,6 +143,7 @@ const flightService = {
     }
   },
 
+  //
   countFlights: async () => {
     try {
       return await flightApi.get("/count-flights", { withCredentials: true });
@@ -145,6 +153,7 @@ const flightService = {
     }
   },
 
+  //
   countStatus: async () => {
     try {
       return await flightApi.get("/count-status", { withCredentials: true });

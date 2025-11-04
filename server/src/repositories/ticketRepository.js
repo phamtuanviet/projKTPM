@@ -1,4 +1,3 @@
-import { PassengerType } from "@prisma/client";
 import { findUserByEmail, findUserById } from "./userRepository.js";
 import {
   getFlightSeatById,

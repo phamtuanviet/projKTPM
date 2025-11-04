@@ -8,6 +8,8 @@ RUN npm install --legacy-peer-deps
 
 # 2. Copy toàn bộ source và build
 COPY . .
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 RUN npm run build
 
 # Stage 2: runtime

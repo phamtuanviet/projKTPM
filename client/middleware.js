@@ -10,7 +10,7 @@ export async function middleware(request) {
 
   try {
     if (isAdminRoute && token) {
-      const secret = new TextEncoder().encode(process.env.SECRET_KEY);
+      const secret = new TextEncoder().encode(process.env.SECRET_KEY || "mySecret");
       const { payload } = await jwtVerify(token, secret);
       if (payload.role !== "ADMIN") {
         return NextResponse.redirect(

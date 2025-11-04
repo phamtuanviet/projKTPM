@@ -39,6 +39,7 @@ const ticketService = {
     }
   },
 
+  //
   filterTickets: async (filterData) => {
     try {
       filterData.page = filterData?.page || 1;
@@ -53,6 +54,7 @@ const ticketService = {
     }
   },
 
+  //
   getTicketsBySearch: async (page, pageSize = 10, query, sortBy, sortOrder) => {
     try {
       const data = await ticketApi.get(`/get-tickets-by-search`, {
@@ -72,6 +74,7 @@ const ticketService = {
     }
   },
 
+  //
   getTicketById: async (id) => {
     try {
       return await ticketApi.get(`/${id}`, { withCredentials: true });
@@ -81,6 +84,7 @@ const ticketService = {
     }
   },
 
+  //
   createTicket: async (ticketData) => {
     try {
       return await ticketApi.post("/", ticketData, { withCredentials: true });
@@ -90,6 +94,7 @@ const ticketService = {
     }
   },
 
+  //
   createTicketClient: async (ticketData) => {
     try {
       return await ticketApi.post("/ticket-client", ticketData, {
@@ -101,6 +106,7 @@ const ticketService = {
     }
   },
 
+  
   updateTicket: async (id, updateData) => {
     try {
       return await ticketApi.put(`/${id}`, updateData, {
@@ -112,6 +118,7 @@ const ticketService = {
     }
   },
 
+  //
   cancelTicket: async (data) => {
     try {
       const res = await ticketApi.put(`/cancel`, data, {
@@ -135,6 +142,7 @@ const ticketService = {
       return null;
     }
   },
+  //
   lookUpTicket: async (search = "") => {
     try {
       const res = await ticketApi.get(`/look-up/${search}`, {
@@ -171,6 +179,7 @@ const ticketService = {
     }
   },
 
+  //
   countTicketStats: async (status) => {
     try {
       const res = await ticketApi.get("count-ticket-stats", {
